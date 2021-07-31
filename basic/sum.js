@@ -2,7 +2,7 @@
 
 function number(n){
     let sum=1;
-    for (let i=0;i<n;i++){
+    for (let i=0;i<=n;i++){
         sum= sum + i 
 
     }
