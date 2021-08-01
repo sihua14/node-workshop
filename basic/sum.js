@@ -9,6 +9,3 @@ function number(n){
     return sum;
 }
 
-console.log(number(5));
-console.log(number(100));
-console.log(number(500));
