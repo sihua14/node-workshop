@@ -8,9 +8,6 @@ function number(n){
         sum+=i
 
     }
-    return sum;
+    return sum;  
 }
 
-console.log(number(5));
-console.log(number(100));
-console.log(number(500));
