@@ -6,6 +6,6 @@ function number(n){
         sum+=i
 
     }
-    return sum;
+    return sum;  
 }
 
