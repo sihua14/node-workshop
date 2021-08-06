@@ -98,7 +98,7 @@ new Promise(function(resolve,reject){
 
 其他參考資源：
 + https://ithelp.ithome.com.tw/articles/10242649
-
++ https://wcc723.github.io/development/2020/02/16/all-new-promise/
 
 
 作業：
