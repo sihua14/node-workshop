@@ -5,11 +5,10 @@
 let doWork = function (job, timer, isOK) {
     // 解決 callback hell:
     return new Promise((resolve, reject) => {
-        // 模擬一個非同步工作
-        console.log("in promise");
         setTimeout(() => {
           let dt = new Date();
-          if (isOK) {resolve(`完成工作: ${job} at ${dt.toISOString()}`);
+          if (isOK) {
+              resolve(`完成工作: ${job} at ${dt.toISOString()}`);
         } else {
           // 失敗
           // cb(`失敗了 ${job}`, null);
