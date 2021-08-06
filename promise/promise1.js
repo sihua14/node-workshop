@@ -1,17 +1,11 @@
-// Promise 是一個表示非同步運算的「最終」完成或失敗的物件。
-//   最終成功
-//   最終失敗
-//   new Promise
+
 let doWork = function (job, timer, isOK) {
-    // 解決 callback hell:
     return new Promise((resolve, reject) => {
         setTimeout(() => {
           let dt = new Date();
           if (isOK) {
               resolve(`完成工作: ${job} at ${dt.toISOString()}`);
         } else {
-          // 失敗
-          // cb(`失敗了 ${job}`, null);
           reject(`失敗了 ${job}`);
         }
       }, timer);
