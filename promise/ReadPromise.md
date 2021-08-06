@@ -61,6 +61,8 @@ p2.catch((error=>{});
 ## Async / Await
 + 基於 promise 的語法糖
 
++ await 到後面那個 promise物件的狀態變成fulfill為止
+
 + 語法糖 -> 有一些繁瑣的寫法，或是每次都要這做
   –> 做成該程式語言內建的用法
 
