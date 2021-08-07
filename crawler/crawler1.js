@@ -5,7 +5,7 @@ const moment = require("moment")
 axios.get("https://www.twse.com.tw/exchangeReport/STOCK_DAY",{
     params:{
             response: "json",
-            date:moment,
+            date:moment().format("YYYYMMDD"),
             stockNo:"2330",
     },
    })
