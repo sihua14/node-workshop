@@ -1,7 +1,12 @@
+/* 
+特別注意：stockNo.txt 填入股票代號時，不能換到第二行，否則會get到的事股票代號跟一行空行，這樣就會get不到資料，node 之後會出現undefined 
+*/
+
 /*
 先讀到檔案stockNo＝>fs.readFile -> 讀完檔案後才會有stockNumber
 然後axios拿到這個股票代號後 -> 再發出請求 ->最後得到3092鴻碩的股票
 */
+
 
 const axios = require("axios");
 const moment = require("moment");
