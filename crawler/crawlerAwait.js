@@ -11,7 +11,7 @@ async function goodJob() {
                 if(err){
                     reject(err);           
                 }else{
-                    resolve(stockNum)
+                    resolve(stockNum.trim()) //trim()過濾掉資料的空白字元->過濾掉較安全
                 }
             });
         })
@@ -29,4 +29,3 @@ async function goodJob() {
         }
     };
  goodJob() 
-    
