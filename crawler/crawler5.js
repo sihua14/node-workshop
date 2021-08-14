@@ -92,7 +92,7 @@ async function goodJob() {
             return item;
             });
             console.log(parseData);
-
+   
         //寫入資料庫
             let insertResult = await insertDataPromise(parseData);
             console.log(insertResult);
