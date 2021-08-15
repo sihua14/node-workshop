@@ -10,7 +10,8 @@ app.use((req, res, next) => {
 });
 
 app.use((req, res, next) => {
-    console.log("我是第二名");
+    let today = new Date()
+    console.log(today);
     next();
 });
 
