@@ -1,5 +1,5 @@
-let brand = "貓貓之家"
-let color = "奶牛"
+let brand = "貓貓之家";
+let color = "奶牛";
 let weight = "5公斤"; 
 let name = "小奶牛";
 
