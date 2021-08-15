@@ -1,4 +1,3 @@
-const { DESTRUCTION } = require("dns");
 const express = require("express");
 
 // 利用 express 建立了一個 express application
