@@ -15,6 +15,6 @@ app.listen(3000, function () {
 app.get("/about", function (request, response, next) {
     response.send("hi");
 });
-app.listen(3001, function () {
+app.listen(3000, function () {
     console.log("關於我們");
 })
