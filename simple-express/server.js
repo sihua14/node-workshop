@@ -1,41 +1,54 @@
-const express = require("express");
-const mysql = require("mysql");
-require("dotenv").config();
-const Promise = require("bluebird");
-const db = require ("./utils/db.js");
-const connection = require("./utils/db.js");
+const express = require ("express");
+const connection = require ("./utils/db");
 
-// 利用 express 建立了一個 express application
+//利用express建立了一個express application
 let app = express();
 
-app.use((req, res, next) => {
-    console.log("我是第一名");
+
+//使用一個自己做的「中間件」
+//app.use(handler): 會傳入一個handler函式
+app.use((req, res, next)=>{
+    let current = new Date();
+    console.log(`有人訪問 at ${current.toISOString()}`);
+    next();
+})
+
+app.use((req, res, next) =>{
+    console.log("我是第二個中間件");
     next();
 });
 
-app.use((req, res, next) => {
-    let today = new Date()
-    console.log(today);
-    next();
+
+
+
+//HTTP Method: get, post, put, delete...
+//第一個參數是網址的長相，後面是處理式（handler)
+//對express來說這也算是一個「中間件」，這是特殊中間件router路由（會比對，順序不一定是由上網下)
+app.get ("/", (req, res, next) => {
+    res.send("hello");
 });
 
-// HTTP Method: get, post, put, patch, delete
-app.get("/", function (req, res, next) {
-  res.send("Hello");
+app.get ("/about", (req, res, next) => {
+    res.send("about");
+});  
+
+//stock get API
+app.get ("/stock", async (req, res, next) => {
+    let result = await connection.queryAsync("SELECT * FROM stock");
+    res.json(result); 
 });
 
-app.get("/about", function (req, res, next) {
-    res.send("about this");
-  });
-
-
-app.get("/stcok", async (req, res, next) => {
-    let result = await connection.queryAsync ("SELECT * FROM stock")
+//stock/2330 = stockCode=2330
+app.get ("/sotck/:stockCode", async (req, res, next)=>{
+    let result = await connection.queryAsync ("SELECT * FROM stock_price WHERE stock_id =?",
+    [req.params.stockCode]
+    );
     res.json(result);
 });
 
-app.listen(3000, function () {
-    //因為改用pool，所以不需要手動連線
-    //await connection.connectAsync();
-  console.log("我們的 web server 啟動了!");
+//啟動app
+app.listen(3000, async function () {
+    //因為改成pool，所以不用手動連線了
+    // await connection.connectAsync();
+    console.log("我的server跑起來了~");
 });
