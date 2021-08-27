@@ -48,7 +48,7 @@ app.get ("/sotck/:stockCode", async (req, res, next)=>{
 
 app.use((req, res, next)=>{
   res.status(404).json({message: "NOT FOUND"});
-});
+});   
 
 //啟動app
 app.listen(3000, async function () {
