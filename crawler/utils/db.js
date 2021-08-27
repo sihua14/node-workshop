@@ -3,7 +3,7 @@ require("dotenv").config();
 //用Promise蓋掉原本內建的promise，用bluebird可能比內建的更有效率
 const Promise= require ("bluebird"); 
 //exports = module.exports = {};
-
+ 
 let connection = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,

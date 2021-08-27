@@ -5,7 +5,7 @@ function processStockDay(stockNum, rawData) {
             console.log(item);
     //處理千位符 
         item = item.map(value=>{
-            return value.replace(/,/g,"");
+            return value.replace(/,/g,"");   
         })
 
     //民國日期轉西元
