@@ -10,22 +10,11 @@ let connection = mysql.createPool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
+  //設定預設值
   connectionLimit: process.env.CONNECTION_LIMIT || 10,
 });
 
-// bluebird
-// 擴充
-// connect -> connectAsync
-// query -> queryAsync
-connection = Promise.promisifyAll(connection);
 
+connection = Promise.promisifyAll(connection);
 module.exports = connection;
 
-// const connection = require();
-// connection.query
-
-// module.exports.connection = connection;
-// const db = require();
-// db.connection.query
-// const {connection} = require()
-// connection.query
