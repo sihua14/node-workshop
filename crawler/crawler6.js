@@ -5,7 +5,7 @@ const axios = require ("axios");
 const moment = require ("moment");
 const { processStockDay } = require ("./utils/TWSEDataProcessor.js");
 
-(async () => {
+(async () => { 
     try{
         //1.讀stock.txt把股票代碼讀進來
         let stockNum =  await fs.readFile ("stockNo.txt","utf8")
