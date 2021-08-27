@@ -74,7 +74,7 @@ function insertDataPromise(parseData){
     } 
    );
   })
-}
+}  
 
 async function goodJob() {
     try{
