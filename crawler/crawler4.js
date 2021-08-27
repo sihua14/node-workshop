@@ -4,6 +4,7 @@ const moment = require("moment");
 const fs = require("fs");
 const mysql = require("mysql");//第三方，需要npm i mysql
 require("dotenv").config();
+const connection = require ("./utils/db.js");
 
 const connection = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -79,6 +80,7 @@ async function goodJob() {
     try{
         // 1.讀取股票代碼  
         let stockNum = await readStockPromise();
+
         // 2.去資料表查詢，這個代碼是否在服務範圍內
         let dbResult =await queryStockCodePromise(stockNum)
         if(dbResult.length === 0){         
@@ -86,19 +88,17 @@ async function goodJob() {
             return;
         }
         console.info("資料庫有資料");
+
         // 3.如果是，才去證交所抓資料
         let response = await queryStockPricePromise(stockNum); 
+
+
         // 4.抓回來的資料存到資料表stock_price裡
         const twseData = response.data;
         if (twseData.stat !=="OK"){
             throw "從證交所查到的資料有問題！"
         }
 
-        // '日期',     '成交股數',
-        // '成交金額', '開盤價',
-        // '最高價',   '最低價',
-        // '收盤價',   '漲跌價差',
-        // '成交筆數' 
         //開始處理資料
         let parseData = twseData.data.map((item)=>{
             console.log("------------------------");
@@ -118,6 +118,9 @@ async function goodJob() {
         //寫入資料庫
             let insertResult = await insertDataPromise(parseData);
             console.log(insertResult);
+
+
+
     } catch(e) {
         console.error(e);
     } finally {
