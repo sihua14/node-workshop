@@ -46,6 +46,10 @@ app.get ("/sotck/:stockCode", async (req, res, next)=>{
     res.json(result);
 });
 
+app.use((req, res, next)=>{
+  res.status(404).json({message: "NOT FOUND"});
+});
+
 //啟動app
 app.listen(3000, async function () {
     //因為改成pool，所以不用手動連線了
